@@ -18,8 +18,8 @@ export default function EventBanner({
   href?: string;
 }) {
   return (
-    <section className="bg-gray-900 text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[1.4fr_1fr]">
+    <section className="bg-gray-900 text-white  ">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 px-4 py-24 sm:px-6 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gray-400">
             {eyebrow}

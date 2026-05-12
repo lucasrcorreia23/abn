@@ -40,7 +40,9 @@ export default function HomePage() {
 
       <EditorsChoice articles={getEditorsChoice(4)} />
       <LatestMagazines />
-      <FeaturedGrid title="Featured stories across ABN" articles={featured} columns={3} />
+      {/*<FeaturedGrid title="Featured stories across ABN" articles={featured} columns={3} />  */}
+      <EventBanner />
+      <LatestNewsList articles={getLatest(8)} />
       <CategorySection
         id={cabinV.slug}
         verticalName={cabinV.name}
@@ -72,8 +74,9 @@ export default function HomePage() {
         tagline={regionalV.tagline}
         articles={regional}
       />
-
+ 
       <VideocastBlock />
+     
 
    
 
@@ -81,7 +84,7 @@ export default function HomePage() {
 
     
 
-      <LatestNewsList articles={getLatest(8)} />
+    
 
       <NewsletterCTA />
 

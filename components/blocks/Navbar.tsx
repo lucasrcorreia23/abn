@@ -35,15 +35,21 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-xs text-gray-500 sm:px-6">
           <span>Aviation Business News — Global B2B coverage</span>
           <div className="hidden gap-4 sm:flex">
+           
+            <Link href="/videocast" className="hover:text-gray-900">
+             Videocast
+            </Link>
+            <Link href="/contact" className="hover:text-gray-900">
+             Contact Us
+            </Link>
+            <Link href="/contact" className="hover:text-gray-900">
+            Advertise with Us
+            </Link>
             <Link href="/newsletter" className="hover:text-gray-900">
               Newsletter
             </Link>
-            <Link href="/subscribe" className="hover:text-gray-900">
-              Subscribe Magazine
-            </Link>
-            <Link href="/events" className="hover:text-gray-900">
-              Events
-            </Link>
+          
+           
           </div>
         </div>
       </div>
@@ -309,7 +315,7 @@ function MegaPanel({ vertical }: { vertical: Vertical }) {
       {/* Column 2 — all sections in a single list */}
       <div>
         <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
-          Sections
+          Topics
         </p>
         <ul className="space-y-1.5">
           {vertical.subcategories.map((sub) => (
