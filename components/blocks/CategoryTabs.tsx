@@ -7,11 +7,8 @@ import { cn } from "@/lib/cn";
  * CategoryTabs — horizontal subcategory filter at the top of each vertical
  * landing page (e.g. inside /cabin: Latest News / Airlines / IFE & Connectivity / …).
  *
- * Full-bleed rail: spans the viewport width, no max-width container. Native
- * scrollbar is hidden (`.no-scrollbar`) and edges fade with `.tabs-edge-fade`
- * so overflowing pills are clearly hinted at without an ugly scroll track.
- *
- * Client component so it can manage active tab state without a full route.
+ * Pills wrap across multiple rows when they don't fit — no scroll, no fade.
+ * Filter visibility should never require horizontal discovery.
  */
 export default function CategoryTabs({
   tabs,
@@ -26,8 +23,8 @@ export default function CategoryTabs({
 
   return (
     <div className="border-b border-gray-200">
-      <div className="no-scrollbar tabs-edge-fade w-full overflow-x-auto">
-        <div className="flex w-max gap-2 py-3 pl-4 pr-8 sm:pl-6">
+      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
+        <div className="flex flex-wrap gap-2">
           {tabs.map((t) => {
             const isActive = t === active;
             return (
@@ -49,8 +46,6 @@ export default function CategoryTabs({
               </button>
             );
           })}
-          {/* Trailing spacer so the last pill is fully visible past the fade */}
-          <span aria-hidden className="w-4 shrink-0" />
         </div>
       </div>
     </div>

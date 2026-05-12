@@ -33,27 +33,13 @@ html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge legacy */
 }
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome/Safari/Webkit */
-}
-
-/* Edge-fade mask used by the tab rail so overflow content fades into
- * the page background instead of being clipped abruptly. */
-.tabs-edge-fade {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 32px,
-    #000 calc(100% - 32px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 32px,
-    #000 calc(100% - 32px),
-    transparent 100%
-  );
+.no-scrollbar::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar-track,
+.no-scrollbar::-webkit-scrollbar-thumb {
+  display: none !important; /* Chrome/Safari/Webkit */
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 /* `@theme inline` extends Tailwind v4's design tokens. */
