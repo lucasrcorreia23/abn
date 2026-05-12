@@ -1,65 +1,91 @@
-import Image from "next/image";
+import HeroMain from "@/components/blocks/HeroMain";
+import CategorySection from "@/components/blocks/CategorySection";
+import FeaturedGrid from "@/components/blocks/FeaturedGrid";
+import EditorsChoice from "@/components/blocks/EditorsChoice";
+import VideocastBlock from "@/components/blocks/VideocastBlock";
+import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import EventBanner from "@/components/blocks/EventBanner";
+import LatestNewsList from "@/components/blocks/LatestNewsList";
+import LatestMagazines from "@/components/blocks/LatestMagazines";
+import {
+  ARTICLES,
+  getArticlesByCategory,
+  getEditorsChoice,
+  getLatest,
+} from "@/lib/mock-articles";
+import { VERTICALS } from "@/lib/sitemap";
 
-export default function Home() {
+export default function HomePage() {
+  const latestAll = getLatest(20);
+  const lead = latestAll[0];
+  // First 2 go to the left column (cards w/ image); the rest fill the
+  // text-only headline list on the right.
+  const secondary = latestAll.slice(1, 8);
+
+  const featured = ARTICLES.filter((a) => a.featured).slice(0, 6);
+
+  const cabin = getArticlesByCategory("cabin", 5);
+  const cargo = getArticlesByCategory("cargo", 5);
+  const mro = getArticlesByCategory("mro", 5);
+  const regional = getArticlesByCategory("regional", 5);
+
+  const cabinV = VERTICALS.find((v) => v.slug === "cabin")!;
+  const cargoV = VERTICALS.find((v) => v.slug === "cargo")!;
+  const mroV = VERTICALS.find((v) => v.slug === "mro")!;
+  const regionalV = VERTICALS.find((v) => v.slug === "regional")!;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <HeroMain lead={lead} secondary={secondary} />
+
+      <EditorsChoice articles={getEditorsChoice(4)} />
+      <LatestMagazines />
+      <FeaturedGrid title="Featured stories across ABN" articles={featured} columns={3} />
+      <CategorySection
+        id={cabinV.slug}
+        verticalName={cabinV.name}
+        verticalSlug={cabinV.slug}
+        tagline={cabinV.tagline}
+        articles={cabin}
+      />
+
+      <CategorySection
+        id={cargoV.slug}
+        verticalName={cargoV.name}
+        verticalSlug={cargoV.slug}
+        tagline={cargoV.tagline}
+        articles={cargo}
+      />
+
+      <CategorySection
+        id={mroV.slug}
+        verticalName={mroV.name}
+        verticalSlug={mroV.slug}
+        tagline={mroV.tagline}
+        articles={mro}
+      />
+
+<CategorySection
+        id={regionalV.slug}
+        verticalName={regionalV.name}
+        verticalSlug={regionalV.slug}
+        tagline={regionalV.tagline}
+        articles={regional}
+      />
+
+      <VideocastBlock />
+
+   
+
+     
+
+    
+
+      <LatestNewsList articles={getLatest(8)} />
+
+      <NewsletterCTA />
+
+    
+    </>
   );
 }
