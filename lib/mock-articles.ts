@@ -14,6 +14,7 @@ export interface Article {
   imagePlaceholder: string; // label shown on the gray placeholder
   featured?: boolean;
   editorsChoice?: boolean;
+  views?: number;
 }
 
 function slugify(s: string) {
@@ -654,6 +655,20 @@ export function getEditorsChoice(limit = 4): Article[] {
 
 export function getLatest(limit = 8): Article[] {
   return [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, limit);
+}
+
+// Pseudo-random but deterministic "views" seeded from the article id, used
+// as a stable mock signal until real analytics are wired up. Falls back to
+// `article.views` if explicitly set on the mock.
+function viewsOf(a: Article): number {
+  if (typeof a.views === "number") return a.views;
+  let hash = 0;
+  for (let i = 0; i < a.id.length; i++) hash = (hash * 31 + a.id.charCodeAt(i)) >>> 0;
+  return 1000 + (hash % 50000);
+}
+
+export function getMostRead(limit = 8): Article[] {
+  return [...ARTICLES].sort((a, b) => viewsOf(b) - viewsOf(a)).slice(0, limit);
 }
 
 export function getRelated(article: Article, limit = 3): Article[] {

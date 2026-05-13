@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
 import TeamGrid from "@/components/blocks/TeamGrid";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 
 export const metadata: Metadata = {
   title: "Meet the Team — ABN",
@@ -36,7 +36,7 @@ export default function TeamPage() {
           { name: "Caitlin Park", role: "Contributing Editor", bio: "Former operations director at a tier-1 MRO; contributes commentary across the verticals." },
         ]}
       />
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
     </>
   );
 }

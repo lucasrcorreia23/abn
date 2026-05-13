@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
 import JobsBoard from "@/components/blocks/JobsBoard";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 
 export const metadata: Metadata = {
   title: "Jobs Board — ABN",
@@ -36,9 +36,11 @@ export default function JobsPage() {
           { title: "Editorial Intern — Regional", company: "ABN", location: "New York, USA", type: "Internship", posted: "Apr 19", category: "Editorial" },
         ]}
       />
-      <NewsletterCTA
+      <MagazineSubscribeCTA
         heading="Get hiring updates"
         description="Subscribe and we'll let you know when new ABN roles open."
+        ctaLabel="Sign up for alerts"
+        href="/newsletter"
       />
     </>
   );

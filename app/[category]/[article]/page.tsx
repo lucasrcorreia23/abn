@@ -5,7 +5,7 @@ import ArticleHeader from "@/components/blocks/ArticleHeader";
 import ArticleHeroImage from "@/components/blocks/ArticleHeroImage";
 import ArticleBody from "@/components/blocks/ArticleBody";
 import AuthorBio from "@/components/blocks/AuthorBio";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 import RelatedArticles from "@/components/blocks/RelatedArticles";
 import { getVertical } from "@/lib/sitemap";
 import {
@@ -57,7 +57,7 @@ export default async function ArticlePage(props: {
       />
       <ArticleBody title={a.title} excerpt={a.excerpt} />
       <AuthorBio author={a.author} bio={a.authorBio} />
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
       <RelatedArticles
         title={`More from ${vertical.name}`}
         articles={getRelated(a, 4)}

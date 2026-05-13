@@ -259,9 +259,7 @@ export const FOOTER_LINKS: { title: string; links: { label: string; href: string
       { label: "Partner Events 2026", href: "/events#partner" },
       { label: "PAM Conference", href: "/events#pam" },
       { label: "Videocast", href: "/videocast" },
-      { label: "Newsletter", href: "/newsletter" },
       { label: "Subscribe Magazine", href: "/subscribe" },
-      { label: "Editor's Choice", href: "/editors-choice" },
     ],
   },
  

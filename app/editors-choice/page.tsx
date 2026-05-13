@@ -3,7 +3,7 @@ import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
 import EditorsChoice from "@/components/blocks/EditorsChoice";
 import FeaturedGrid from "@/components/blocks/FeaturedGrid";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 import { ARTICLES, getEditorsChoice } from "@/lib/mock-articles";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function EditorsChoicePage() {
       />
       <EditorsChoice articles={featured} />
       <FeaturedGrid title="More long reads to bookmark" articles={additional} columns={3} />
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
     </>
   );
 }

@@ -5,7 +5,7 @@ import HeroCategory from "@/components/blocks/HeroCategory";
 import CategoryTabs from "@/components/blocks/CategoryTabs";
 import FeaturedGrid from "@/components/blocks/FeaturedGrid";
 import ArticleListRow from "@/components/blocks/ArticleListRow";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 import RelatedArticles from "@/components/blocks/RelatedArticles";
 import { VERTICALS, getVertical } from "@/lib/sitemap";
 import { getArticlesByCategory } from "@/lib/mock-articles";
@@ -78,7 +78,7 @@ export default async function CategoryPage(props: {
         </div>
       </section>
 
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
       <RelatedArticles title={`More from ${vertical.name}`} articles={related} />
     </>
   );

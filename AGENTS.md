@@ -42,7 +42,7 @@ in `components/blocks/`. This is a **hard cap**, not a target.
 16. `ArticleBody`
 17. `AuthorBio`
 18. `RelatedArticles`
-19. `NewsletterCTA`
+19. `MagazineSubscribeCTA`
 20. `LatestMagazines`
 21. `EventBanner`
 22. `VideocastBlock`

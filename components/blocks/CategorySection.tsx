@@ -3,10 +3,10 @@ import type { Article } from "@/lib/mock-articles";
 import { formatDate } from "@/lib/mock-articles";
 
 /**
- * CategorySection — home-page section for one vertical: title bar + a tight
- * row of 4 equally-sized story cards + "View all" link.
+ * CategorySection — home-page section for one vertical, Globo-style:
+ * 1 large lead card on the left + 4 smaller cards on the right (2×2).
  *
- * Pass 4 articles — additional articles are ignored.
+ * Pass 5 articles — [0] is the lead, [1..4] fill the right grid.
  */
 export default function CategorySection({
   verticalName,
@@ -22,8 +22,9 @@ export default function CategorySection({
   /** Optional DOM id — used as anchor target by the floating nav. */
   id?: string;
 }) {
-  const cards = articles.slice(0, 4);
-  if (cards.length === 0) return null;
+  const lead = articles[0];
+  const rest = articles.slice(1, 5);
+  if (!lead) return null;
 
   return (
     <section id={id} className="scroll-mt-24 border-b border-gray-200">
@@ -43,8 +44,34 @@ export default function CategorySection({
           </Link>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((a) => (
+        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr_1fr]">
+          {/* Lead — spans 2 rows on desktop */}
+          <Link
+            href={`/${lead.category}/${lead.slug}`}
+            className="group flex flex-col lg:row-span-2"
+          >
+            <div
+              className="ph-img aspect-[4/3] w-full"
+              data-label={lead.imagePlaceholder}
+            />
+            <div className="mt-3">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-gray-500">
+                {lead.subcategory}
+              </span>
+              <h3 className="mt-1 text-xl font-bold leading-snug text-gray-900 group-hover:underline sm:text-2xl">
+                {lead.title}
+              </h3>
+              <p className="mt-2 line-clamp-3 text-sm text-gray-600">
+                {lead.excerpt}
+              </p>
+              <p className="mt-2 text-[11px] text-gray-500">
+                {lead.author} · {formatDate(lead.date)}
+              </p>
+            </div>
+          </Link>
+
+          {/* 4 chamadas — fill remaining 2×2 grid */}
+          {rest.map((a) => (
             <Link
               key={a.id}
               href={`/${a.category}/${a.slug}`}
@@ -54,18 +81,15 @@ export default function CategorySection({
                 className="ph-img aspect-[16/9] w-full"
                 data-label={a.imagePlaceholder}
               />
-              <div className="mt-3">
+              <div className="mt-2">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-gray-500">
                   {a.subcategory}
                 </span>
-                <h3 className="mt-1 text-sm font-semibold leading-snug text-gray-900 group-hover:underline">
+                <h3 className="mt-1 line-clamp-3 text-sm font-semibold leading-snug text-gray-900 group-hover:underline">
                   {a.title}
                 </h3>
-                <p className="mt-1.5 line-clamp-2 text-xs text-gray-600">
-                  {a.excerpt}
-                </p>
-                <p className="mt-2 text-[11px] text-gray-500">
-                  {a.author} · {formatDate(a.date)}
+                <p className="mt-1 text-[11px] text-gray-500">
+                  {formatDate(a.date)}
                 </p>
               </div>
             </Link>

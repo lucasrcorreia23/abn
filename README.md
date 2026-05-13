@@ -133,7 +133,7 @@ props (no hardcoded copy inside), and has a one-line JSDoc explaining its role.
 
 | #  | Block              | Purpose                                                      |
 | -- | ------------------ | ------------------------------------------------------------ |
-| 19 | `NewsletterCTA`    | Inline newsletter sign-up band reused everywhere.            |
+| 19 | `MagazineSubscribeCTA` | Paid magazine subscription CTA band (companion to footer newsletter). |
 | 20 | `LatestMagazines`  | "Latest specialist magazine editions" row of 4 cover cards.  |
 | 21 | `EventBanner`      | Dark contrast banner for Next Event / PAM Conference.        |
 | 22 | `VideocastBlock`   | Video "player" placeholder + queue of upcoming episodes.     |

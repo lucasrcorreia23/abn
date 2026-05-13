@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
 import EventBanner from "@/components/blocks/EventBanner";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 
 export const metadata: Metadata = {
   title: "Events & Webinars — ABN",
@@ -66,9 +66,11 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <NewsletterCTA
+      <MagazineSubscribeCTA
         heading="Events updates in your inbox"
         description="Subscribe to receive agenda, speakers and registration updates for the PAM Conference and ABN partner events."
+        ctaLabel="Sign up for updates"
+        href="/newsletter"
       />
     </>
   );

@@ -1,28 +1,22 @@
 import HeroMain from "@/components/blocks/HeroMain";
 import CategorySection from "@/components/blocks/CategorySection";
-import FeaturedGrid from "@/components/blocks/FeaturedGrid";
 import EditorsChoice from "@/components/blocks/EditorsChoice";
 import VideocastBlock from "@/components/blocks/VideocastBlock";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 import EventBanner from "@/components/blocks/EventBanner";
 import LatestNewsList from "@/components/blocks/LatestNewsList";
-import LatestMagazines from "@/components/blocks/LatestMagazines";
 import {
-  ARTICLES,
   getArticlesByCategory,
   getEditorsChoice,
   getLatest,
+  getMostRead,
 } from "@/lib/mock-articles";
 import { VERTICALS } from "@/lib/sitemap";
 
 export default function HomePage() {
   const latestAll = getLatest(20);
   const lead = latestAll[0];
-  // First 2 go to the left column (cards w/ image); the rest fill the
-  // text-only headline list on the right.
   const secondary = latestAll.slice(1, 8);
-
-  const featured = ARTICLES.filter((a) => a.featured).slice(0, 6);
 
   const cabin = getArticlesByCategory("cabin", 5);
   const cargo = getArticlesByCategory("cargo", 5);
@@ -38,11 +32,6 @@ export default function HomePage() {
     <>
       <HeroMain lead={lead} secondary={secondary} />
 
-      <EditorsChoice articles={getEditorsChoice(4)} />
-      <LatestMagazines />
-      {/*<FeaturedGrid title="Featured stories across ABN" articles={featured} columns={3} />  */}
-      <EventBanner />
-      <LatestNewsList articles={getLatest(8)} />
       <CategorySection
         id={cabinV.slug}
         verticalName={cabinV.name}
@@ -50,7 +39,6 @@ export default function HomePage() {
         tagline={cabinV.tagline}
         articles={cabin}
       />
-
       <CategorySection
         id={cargoV.slug}
         verticalName={cargoV.name}
@@ -58,7 +46,6 @@ export default function HomePage() {
         tagline={cargoV.tagline}
         articles={cargo}
       />
-
       <CategorySection
         id={mroV.slug}
         verticalName={mroV.name}
@@ -66,29 +53,23 @@ export default function HomePage() {
         tagline={mroV.tagline}
         articles={mro}
       />
-
-<CategorySection
+      <CategorySection
         id={regionalV.slug}
         verticalName={regionalV.name}
         verticalSlug={regionalV.slug}
         tagline={regionalV.tagline}
         articles={regional}
       />
- 
+
+      <EditorsChoice articles={getEditorsChoice(4)} />
+
+      <EventBanner />
+
+      <LatestNewsList title="Most Read" articles={getMostRead(8)} />
+
       <VideocastBlock />
-     
 
-   
-
-     
-
-    
-
-    
-
-      <NewsletterCTA />
-
-    
+      <MagazineSubscribeCTA />
     </>
   );
 }

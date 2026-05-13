@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 import RichTextContent from "@/components/blocks/RichTextContent";
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export default function NewsletterPage() {
           },
         ]}
       />
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
     </>
   );
 }

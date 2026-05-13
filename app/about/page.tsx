@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
 import RichTextContent from "@/components/blocks/RichTextContent";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 
 export const metadata: Metadata = {
   title: "About ABN — Aviation Business News",
@@ -39,7 +39,7 @@ export default function AboutPage() {
           },
         ]}
       />
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
     </>
   );
 }

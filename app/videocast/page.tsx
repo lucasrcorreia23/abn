@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/blocks/Breadcrumb";
 import PageHeader from "@/components/blocks/PageHeader";
 import VideocastBlock from "@/components/blocks/VideocastBlock";
-import NewsletterCTA from "@/components/blocks/NewsletterCTA";
+import MagazineSubscribeCTA from "@/components/blocks/MagazineSubscribeCTA";
 
 export const metadata: Metadata = {
   title: "Videocast — ABN",
@@ -61,7 +61,7 @@ export default function VideocastPage() {
         </div>
       </section>
 
-      <NewsletterCTA />
+      <MagazineSubscribeCTA />
     </>
   );
 }
