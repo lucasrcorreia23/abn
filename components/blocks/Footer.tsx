@@ -25,24 +25,32 @@ export default function Footer() {
             </Link>
 
             <form
-              className="mt-5 flex max-w-xs gap-2"
+              className="mt-5 max-w-xs"
               onSubmit={(e) => e.preventDefault()}
             >
-              <label className="sr-only" htmlFor="footer-newsletter">
-                Your email
-              </label>
-              <input
-                id="footer-newsletter"
-                type="email"
-                placeholder="Your email"
-                className="flex-1 border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-900"
-              />
-              <button
-                type="submit"
-                className="bg-gray-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-black"
+              <label
+                htmlFor="footer-newsletter"
+                className="block text-[11px] font-semibold uppercase tracking-widest text-gray-900"
               >
-                Sign up
-              </button>
+                Newsletter
+              </label>
+              <p className="mt-1 text-xs text-gray-500">
+                Weekly briefings on cabin, cargo, MRO and regional aviation.
+              </p>
+              <div className="mt-2 flex gap-2">
+                <input
+                  id="footer-newsletter"
+                  type="email"
+                  placeholder="Your email"
+                  className="flex-1 border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-900"
+                />
+                <button
+                  type="submit"
+                  className="bg-gray-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-black"
+                >
+                  Sign up
+                </button>
+              </div>
             </form>
 
             <div className="mt-6 flex gap-4 text-gray-500">

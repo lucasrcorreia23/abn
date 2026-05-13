@@ -18,13 +18,13 @@ export default function MagazineSubscribeCTA({
 }) {
   return (
     <section className="border-y border-gray-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:py-12">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-18">
         <div className="grid items-center gap-6 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-500">
               Subscribe to the magazine
             </p>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-extrabold max-w-md tracking-tight text-gray-900 sm:text-3xl">
               {heading}
             </h2>
             <p className="mt-2 max-w-xl text-sm text-gray-600">{description}</p>

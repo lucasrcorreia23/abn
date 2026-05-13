@@ -16,7 +16,7 @@ import { VERTICALS } from "@/lib/sitemap";
 export default function HomePage() {
   const latestAll = getLatest(20);
   const lead = latestAll[0];
-  const secondary = latestAll.slice(1, 8);
+  const secondary = latestAll.slice(1, 9);
 
   const cabin = getArticlesByCategory("cabin", 5);
   const cargo = getArticlesByCategory("cargo", 5);
@@ -33,32 +33,12 @@ export default function HomePage() {
       <HeroMain lead={lead} secondary={secondary} />
 
       <CategorySection
-        id={cabinV.slug}
-        verticalName={cabinV.name}
-        verticalSlug={cabinV.slug}
-        tagline={cabinV.tagline}
-        articles={cabin}
-      />
-      <CategorySection
-        id={cargoV.slug}
-        verticalName={cargoV.name}
-        verticalSlug={cargoV.slug}
-        tagline={cargoV.tagline}
-        articles={cargo}
-      />
-      <CategorySection
-        id={mroV.slug}
-        verticalName={mroV.name}
-        verticalSlug={mroV.slug}
-        tagline={mroV.tagline}
-        articles={mro}
-      />
-      <CategorySection
-        id={regionalV.slug}
-        verticalName={regionalV.name}
-        verticalSlug={regionalV.slug}
-        tagline={regionalV.tagline}
-        articles={regional}
+        columns={[
+          { vertical: cabinV, articles: cabin },
+          { vertical: cargoV, articles: cargo },
+          { vertical: mroV, articles: mro },
+          { vertical: regionalV, articles: regional },
+        ]}
       />
 
       <EditorsChoice articles={getEditorsChoice(4)} />

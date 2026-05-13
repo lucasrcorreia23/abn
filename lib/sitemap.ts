@@ -223,7 +223,7 @@ export function getMegaSection(slug: string): MegaSection | undefined {
 
 export const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[] = [
   {
-    title: "Verticals",
+    title: "Hubs",
     links: [
       { label: "Cabin", href: "/cabin" },
       { label: "Cargo", href: "/cargo" },
@@ -259,7 +259,7 @@ export const FOOTER_LINKS: { title: string; links: { label: string; href: string
       { label: "Partner Events 2026", href: "/events#partner" },
       { label: "PAM Conference", href: "/events#pam" },
       { label: "Videocast", href: "/videocast" },
-      { label: "Subscribe Magazine", href: "/subscribe" },
+    
     ],
   },
  

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Article } from "@/lib/mock-articles";
-import { formatDate } from "@/lib/mock-articles";
 
 /**
  * HeroMain — home hub hero, BBC/Globo style.
@@ -52,19 +51,15 @@ export default function HeroMain({
               <p className="mt-3 max-w-3xl text-base text-gray-600 sm:text-lg">
                 {lead.excerpt}
               </p>
-              <p className="mt-3 text-xs text-gray-500">
-                {lead.author} · {formatDate(lead.date)} · {lead.readTime} min read
-              </p>
+            
             </div>
           </Link>
         </article>
 
         {/* Right column — text-only headlines list */}
         <aside className="order-3 flex flex-col lg:border-l lg:border-gray-200 lg:pl-6">
-          <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
-            More headlines
-          </p>
-          <ol className="divide-y divide-gray-200 border-y border-gray-200">
+         
+          <ol className="divide-y divide-gray-200">
             {right.map((a) => (
               <li key={a.id}>
                 <HeadlineRow article={a} />
@@ -89,7 +84,6 @@ function HeadlineRow({ article }: { article: Article }) {
       <h3 className="mt-1 text-sm font-semibold leading-snug text-gray-900 group-hover:underline">
         {article.title}
       </h3>
-      <p className="mt-1 text-[11px] text-gray-500">{formatDate(article.date)}</p>
     </Link>
   );
 }
@@ -111,7 +105,6 @@ function SideCard({ article }: { article: Article }) {
         <h2 className="mt-1 text-base font-semibold leading-snug text-gray-900 group-hover:underline">
           {article.title}
         </h2>
-        <p className="mt-1 text-[11px] text-gray-500">{formatDate(article.date)}</p>
       </div>
     </Link>
   );
