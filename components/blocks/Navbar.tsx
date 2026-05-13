@@ -28,12 +28,48 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [hidden, setHidden] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
     if (searchOpen) searchInputRef.current?.focus();
   }, [searchOpen]);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const threshold = 80;
+    const delta = 6;
+
+    const update = () => {
+      const y = window.scrollY;
+      const diff = y - lastY;
+      if (Math.abs(diff) > delta) {
+        if (diff > 0 && y > threshold) {
+          setHidden(true);
+        } else if (diff < 0) {
+          setHidden(false);
+        }
+        lastY = y;
+      }
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (openMobile || searchOpen) setHidden(false);
+  }, [openMobile, searchOpen]);
 
   useEffect(() => {
     if (!searchOpen) return;
@@ -66,7 +102,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white">
+      <header
+        className={`sticky top-0 z-40 w-full border-b border-gray-200 bg-white transition-transform duration-300 ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         {/* Top row — centered logo (mobile: hamburger left, logo center) */}
         <div className="mx-auto flex max-w-7xl items-center px-4 py-4 sm:px-6">
           <div className="hidden flex-1 lg:block" aria-hidden />
