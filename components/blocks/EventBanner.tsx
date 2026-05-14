@@ -4,7 +4,8 @@ import Link from "next/link";
 
 /**
  * EventBanner — promotional banner for the next ABN event (e.g. PAM Conference).
- * Background image with dark overlay; conversion form on the right.
+ * variant="slim"  → compact horizontal strip, light background, no form
+ * variant="full"  → full dark section with two columns and registration form
  */
 export default function EventBanner({
   eyebrow = "Next Event",
@@ -12,13 +13,43 @@ export default function EventBanner({
   location = "Singapore",
   date = "21–23 October 2026",
   href = "/events",
+  variant = "full",
 }: {
   eyebrow?: string;
   name?: string;
   location?: string;
   date?: string;
   href?: string;
+  variant?: "full" | "slim";
 }) {
+  if (variant === "slim") {
+    return (
+      <section className="bg-black">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <span className="shrink-0 border border-white/30 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/70">
+              {eyebrow}
+            </span>
+            <div className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="text-sm font-extrabold tracking-tight text-white">
+                {name}
+              </span>
+              <span className="text-xs text-white/50">
+                {date} · {location}
+              </span>
+            </div>
+            <Link
+              href={href}
+              className="shrink-0 border border-white/40 px-4 py-2 text-[11px] font-semibold uppercase tracking-widest text-white hover:border-white hover:bg-white hover:text-black"
+            >
+              View agenda →
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="relative isolate overflow-hidden bg-gray-900 text-white">
    

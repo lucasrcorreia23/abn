@@ -32,6 +32,10 @@ export default function HomePage() {
     <>
       <HeroMain lead={lead} secondary={secondary} />
 
+      <EventBanner variant="slim" />
+
+      <VideocastBlock />
+
       <CategorySection
         columns={[
           { vertical: cabinV, articles: cabin },
@@ -46,8 +50,6 @@ export default function HomePage() {
       <EventBanner />
 
       <LatestNewsList title="Most Read" articles={getMostRead(8)} />
-
-      <VideocastBlock />
 
       <MagazineSubscribeCTA />
     </>

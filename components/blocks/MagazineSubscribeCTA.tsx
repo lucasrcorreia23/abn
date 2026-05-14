@@ -10,16 +10,23 @@ export default function MagazineSubscribeCTA({
   description = "Long-form reporting, exclusive interviews and full archive access across Cabin, Cargo, MRO and Regional. Subscribe to one or all four titles.",
   ctaLabel = "Subscribe now",
   href = "/subscribe",
+  coverLabel = "CABIN #82",
 }: {
   heading?: string;
   description?: string;
   ctaLabel?: string;
   href?: string;
+  coverLabel?: string;
 }) {
   return (
     <section className="border-y border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-18">
-        <div className="grid items-center gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <div className="grid items-center gap-8 lg:grid-cols-[160px_1.4fr_1fr]">
+          <div
+            className="ph-img hidden aspect-[3/4] w-full shadow-sm lg:block"
+            data-label={coverLabel}
+          />
+
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-500">
               Subscribe to the magazine
