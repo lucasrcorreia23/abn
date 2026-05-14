@@ -132,7 +132,7 @@ export default function Navbar() {
               width={180}
               height={73}
               priority
-              className="h-10 w-auto grayscale contrast-125"
+              className="h-14 w-auto grayscale contrast-125"
             />
           </Link>
 
